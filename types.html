@@ -3,66 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Критерии подбора хостингов</title>
-    <!-- Подключение локальных файлов Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>Виды хостингов</title>
+    <!-- Подключение Bootstrap 5 CSS через CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <!-- Подключение иконок Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Кастомизация стилей -->
     <style>
-        /* Стили для режима слабовидящих */
-        body.accessibility-mode {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #000;
-            background-color: #fff;
-        }
-        body.accessibility-mode .navbar,
-        body.accessibility-mode .footer {
-            background-color: #333;
-            color: #fff;
-        }
-        body.accessibility-mode .btn-primary {
-            background-color: #0056b3;
-            border-color: #004080;
-        }
-        body.accessibility-mode .video-container {
-            border: 2px solid #000;
-        }
-        body.accessibility-mode .sidebar {
+        .sidebar {
             background-color: #f8f9fa;
-            border: 2px solid #000;
+            padding: 20px;
+            border-radius: 10px;
         }
-        body.accessibility-mode .nav-tabs .nav-link {
-            color: #000;
+        .nav-tabs .nav-link {
+            color: #2c3e50;
+            font-weight: 500;
         }
-        body.accessibility-mode .nav-tabs .nav-link.active {
+        .nav-tabs .nav-link.active {
             background-color: #f8f9fa;
-            border-color: #000;
+            border-color: #dee2e6 #dee2e6 #f8f9fa;
         }
-        body.accessibility-mode .table {
-            background-color: #fff;
-            color: #000;
-        }
-        body.accessibility-mode .table th,
-        body.accessibility-mode .table td {
-            border-color: #000;
-        }
-        /* Скрытие изображений и видео */
-        body.hide-images img,
-        body.hide-images video {
-            display: none;
+        .accessibility-settings {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
+    <!-- Навигационное меню -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Хостинги</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="types.html">Виды хостингов</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="criteria.html">Критерии подбора</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support.html">Техническая поддержка</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!-- Кнопка для слабовидящих -->
-    <div class="accessibility-bar bg-light p-2 text-end">
-        <button id="accessibilityToggle" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#accessibilityModal">
-            <i class="bi bi-eye-fill"></i> Версия для слабовидящих
-        </button>
-    </div>
+    <button class="btn btn-primary accessibility-settings" data-bs-toggle="modal" data-bs-target="#accessibilityModal">
+        Для слабовидящих
+    </button>
 
     <!-- Модальное окно для настроек доступности -->
     <div class="modal fade" id="accessibilityModal" tabindex="-1" aria-labelledby="accessibilityModalLabel" aria-hidden="true">
@@ -74,173 +75,135 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <!-- Размер шрифта -->
                         <div class="mb-3">
                             <label for="fontSize" class="form-label">Размер шрифта</label>
                             <select class="form-select" id="fontSize">
                                 <option value="16px">Стандартный</option>
-                                <option value="18px">Большой</option>
-                                <option value="20px">Очень большой</option>
+                                <option value="20px">Большой</option>
+                                <option value="24px">Очень большой</option>
                             </select>
                         </div>
-                        <!-- Цвет фона -->
                         <div class="mb-3">
                             <label for="backgroundColor" class="form-label">Цвет фона</label>
                             <select class="form-select" id="backgroundColor">
                                 <option value="#ffffff">Белый</option>
-                                <option value="#f8f9fa">Светло-серый</option>
                                 <option value="#000000">Черный</option>
+                                <option value="#f8f9fa">Светло-серый</option>
                             </select>
                         </div>
-                        <!-- Цвет шрифта -->
                         <div class="mb-3">
                             <label for="fontColor" class="form-label">Цвет шрифта</label>
                             <select class="form-select" id="fontColor">
                                 <option value="#000000">Черный</option>
-                                <option value="#333333">Темно-серый</option>
                                 <option value="#ffffff">Белый</option>
+                                <option value="#2c3e50">Темно-синий</option>
                             </select>
                         </div>
-                        <!-- Интервал -->
                         <div class="mb-3">
-                            <label for="lineHeight" class="form-label">Интервал</label>
+                            <label for="lineHeight" class="form-label">Интервал между строками</label>
                             <select class="form-select" id="lineHeight">
                                 <option value="1.5">Стандартный</option>
                                 <option value="2">Большой</option>
                                 <option value="2.5">Очень большой</option>
                             </select>
                         </div>
-                        <!-- Отключение изображений и видео -->
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="hideMedia">
-                            <label class="form-check-label" for="hideMedia">Отключить изображения и видео</label>
+                            <input type="checkbox" class="form-check-input" id="disableImages">
+                            <label class="form-check-label" for="disableImages">Отключить изображения</label>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="disableVideos">
+                            <label class="form-check-label" for="disableVideos">Отключить видео</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                    <button type="button" class="btn btn-primary" id="applyAccessibilitySettings">Применить</button>
+                    <button type="button" class="btn btn-primary" id="applySettings">Применить</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Навигационное меню -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">Хостинги</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Главная</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="types.html">Виды хостингов</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="criteria.html">Критерии подбора</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="support.html">Техническая поддержка</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Контакты</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
     <!-- Основной контент -->
     <div class="container mt-4">
         <div class="row">
             <!-- Основная часть -->
             <div class="col-md-8">
-                <h1>Критерии подбора хостингов</h1>
-                <p>Выбор хостинга — это важный этап при создании сайта. Рассмотрим основные критерии, на которые стоит обратить внимание.</p>
+                <h1>Виды хостингов</h1>
+                <p>Хостинг — это услуга по размещению сайтов на серверах. Существует несколько видов хостингов, каждый из которых подходит для разных задач.</p>
 
-                <!-- Производительность -->
+                <!-- Виртуальный хостинг -->
                 <section class="mb-5">
-                    <h2>1. Производительность</h2>
-                    <img src="images/performance.jpg.webp" alt="Производительность" class="img-fluid mb-3">
-                    <p>Производительность хостинга влияет на скорость загрузки вашего сайта. Основные факторы:</p>
+                    <h2>Виртуальный хостинг</h2>
+                    <img src="images/shared-hosting.jpg" alt="Виртуальный хостинг" class="img-fluid mb-3">
+                    <p>Виртуальный хостинг — это самый простой и доступный вид хостинга. На одном сервере размещаются множество сайтов, которые используют общие ресурсы.</p>
+                    <h3>Преимущества:</h3>
                     <ul>
-                        <li><strong>Скорость процессора</strong> — чем быстрее процессор, тем быстрее обрабатываются запросы.</li>
-                        <li><strong>Объем оперативной памяти (RAM)</strong> — больше памяти позволяет обрабатывать больше запросов одновременно.</li>
-                        <li><strong>Тип хранилища</strong> — SSD быстрее, чем HDD.</li>
+                        <li>Низкая стоимость</li>
+                        <li>Простота в использовании</li>
+                        <li>Подходит для небольших сайтов</li>
+                    </ul>
+                    <h3>Недостатки:</h3>
+                    <ul>
+                        <li>Ограниченные ресурсы</li>
+                        <li>Зависимость от других сайтов на сервере</li>
                     </ul>
                 </section>
 
-                <!-- Надежность -->
+                <!-- VPS -->
                 <section class="mb-5">
-                    <h2>2. Надежность</h2>
-                    <img src="images/reliability.jpg.webp" alt="Надежность" class="img-fluid mb-3">
-                    <p>Надежность хостинга определяет, насколько стабильно будет работать ваш сайт. Ключевые аспекты:</p>
+                    <h2>VPS (Виртуальный выделенный сервер)</h2>
+                    <img src="images/vps-hosting.jpg" alt="VPS" class="img-fluid mb-3">
+                    <p>VPS — это виртуальный сервер, который предоставляет больше ресурсов и контроля по сравнению с виртуальным хостингом. Каждый VPS имеет свои выделенные ресурсы.</p>
+                    <h3>Преимущества:</h3>
                     <ul>
-                        <li><strong>Аптайм (Uptime)</strong> — процент времени, когда хостинг доступен. Хороший показатель — 99,9% и выше.</li>
-                        <li><strong>Резервное копирование</strong> — регулярные бэкапы данных помогут восстановить сайт в случае сбоя.</li>
-                        <li><strong>Защита от DDoS-атак</strong> — важна для предотвращения атак на ваш сайт.</li>
+                        <li>Больше контроля и гибкости</li>
+                        <li>Выделенные ресурсы</li>
+                        <li>Подходит для средних и крупных проектов</li>
+                    </ul>
+                    <h3>Недостатки:</h3>
+                    <ul>
+                        <li>Выше стоимость</li>
+                        <li>Требуются технические знания</li>
                     </ul>
                 </section>
 
-                <!-- Поддержка -->
+                <!-- Выделенный сервер -->
                 <section class="mb-5">
-                    <h2>3. Поддержка</h2>
-                    <img src="images/support.jpg.webp" alt="Поддержка" class="img-fluid mb-3">
-                    <p>Качество технической поддержки может сыграть решающую роль в критических ситуациях. Обратите внимание на:</p>
+                    <h2>Выделенный сервер</h2>
+                    <img src="images/dedicated-server.jpg" alt="Выделенный сервер" class="img-fluid mb-3">
+                    <p>Выделенный сервер — это физический сервер, который полностью принадлежит вам. Это самый мощный вид хостинга.</p>
+                    <h3>Преимущества:</h3>
                     <ul>
-                        <li><strong>Доступность поддержки 24/7</strong> — помощь должна быть доступна в любое время.</li>
-                        <li><strong>Способы связи</strong> — чат, телефон, электронная почта.</li>
-                        <li><strong>Время реакции</strong> — чем быстрее, тем лучше.</li>
+                        <li>Максимальная производительность</li>
+                        <li>Полный контроль над сервером</li>
+                        <li>Подходит для крупных проектов</li>
+                    </ul>
+                    <h3>Недостатки:</h3>
+                    <ul>
+                        <li>Высокая стоимость</li>
+                        <li>Требуются глубокие технические знания</li>
                     </ul>
                 </section>
 
-                <!-- Стоимость -->
+                <!-- Облачный хостинг -->
                 <section class="mb-5">
-                    <h2>4. Стоимость</h2>
-                    <img src="images/cost.jpg.webp" alt="Стоимость" class="img-fluid mb-3">
-                    <p>Стоимость хостинга зависит от предоставляемых ресурсов и услуг. Важно учитывать:</p>
+                    <h2>Облачный хостинг</h2>
+                    <img src="images/cloud-hosting.jpg" alt="Облачный хостинг" class="img-fluid mb-3">
+                    <p>Облачный хостинг использует несколько серверов для размещения сайта. Это обеспечивает высокую надежность и масштабируемость.</p>
+                    <h3>Преимущества:</h3>
                     <ul>
-                        <li><strong>Тарифные планы</strong> — выбирайте план, который соответствует вашим потребностям.</li>
-                        <li><strong>Скрытые платежи</strong> — уточните, что входит в стоимость.</li>
-                        <li><strong>Возможность масштабирования</strong> — сможете ли вы легко перейти на более мощный тариф.</li>
+                        <li>Высокая надежность</li>
+                        <li>Масштабируемость</li>
+                        <li>Оплата только за используемые ресурсы</li>
+                    </ul>
+                    <h3>Недостатки:</h3>
+                    <ul>
+                        <li>Сложность в управлении</li>
+                        <li>Высокая стоимость при больших нагрузках</li>
                     </ul>
                 </section>
-
-                <!-- Таблица сравнения критериев -->
-                <h2>Сравнение критериев</h2>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Критерий</th>
-                            <th>Описание</th>
-                            <th>Важность</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Производительность</td>
-                            <td>Скорость обработки запросов и загрузки сайта.</td>
-                            <td>Высокая</td>
-                        </tr>
-                        <tr>
-                            <td>Надежность</td>
-                            <td>Стабильность работы и защита от сбоев.</td>
-                            <td>Высокая</td>
-                        </tr>
-                        <tr>
-                            <td>Поддержка</td>
-                            <td>Качество и доступность технической помощи.</td>
-                            <td>Средняя</td>
-                        </tr>
-                        <tr>
-                            <td>Стоимость</td>
-                            <td>Цена и прозрачность тарифов.</td>
-                            <td>Средняя</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
 
             <!-- Сайдбар -->
@@ -296,45 +259,40 @@
     <!-- Подвал -->
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
-            <span class="text-muted">© 2023 Виды хостингов. Все права защищены.</span>
+            <span class="text-muted">© 2025 Виды хостингов проект Тимченко Е.В. Все права защищены.</span>
         </div>
     </footer>
 
-    <!-- Подключение локальных файлов Bootstrap JS и зависимостей -->
-    <script src="js/jquery-3.5.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Скрипт для режима слабовидящих -->
+    <!-- Подключение Bootstrap 5 JS через CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Скрипт для применения настроек доступности -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const applyAccessibilitySettings = document.getElementById('applyAccessibilitySettings');
-            const body = document.body;
+        document.getElementById('applySettings').addEventListener('click', function() {
+            const fontSize = document.getElementById('fontSize').value;
+            const backgroundColor = document.getElementById('backgroundColor').value;
+            const fontColor = document.getElementById('fontColor').value;
+            const lineHeight = document.getElementById('lineHeight').value;
+            const disableImages = document.getElementById('disableImages').checked;
+            const disableVideos = document.getElementById('disableVideos').checked;
 
-            // Применение настроек доступности
-            applyAccessibilitySettings.addEventListener('click', function () {
-                const fontSize = document.getElementById('fontSize').value;
-                const backgroundColor = document.getElementById('backgroundColor').value;
-                const fontColor = document.getElementById('fontColor').value;
-                const lineHeight = document.getElementById('lineHeight').value;
-                const hideMedia = document.getElementById('hideMedia').checked;
+            document.body.style.fontSize = fontSize;
+            document.body.style.backgroundColor = backgroundColor;
+            document.body.style.color = fontColor;
+            document.body.style.lineHeight = lineHeight;
 
-                // Применение стилей
-                body.style.fontSize = fontSize;
-                body.style.backgroundColor = backgroundColor;
-                body.style.color = fontColor;
-                body.style.lineHeight = lineHeight;
-
-                // Отключение изображений и видео
-                if (hideMedia) {
-                    body.classList.add('hide-images');
-                } else {
-                    body.classList.remove('hide-images');
-                }
-
-                // Закрытие модального окна
-                const modal = bootstrap.Modal.getInstance(document.getElementById('accessibilityModal'));
-                modal.hide();
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.style.display = disableImages ? 'none' : 'block';
             });
+
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.style.display = disableVideos ? 'none' : 'block';
+            });
+
+            // Закрываем модальное окно после применения настроек
+            const modal = bootstrap.Modal.getInstance(document.getElementById('accessibilityModal'));
+            modal.hide();
         });
     </script>
 </body>
