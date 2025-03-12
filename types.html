@@ -28,6 +28,21 @@
             right: 10px;
             z-index: 1000;
         }
+        /* Адаптивные стили для мобильных устройств */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                flex-direction: column;
+            }
+            .sidebar {
+                margin-top: 20px;
+            }
+            .accessibility-settings {
+                top: 5px;
+                right: 5px;
+                font-size: 14px;
+                padding: 5px 10px;
+            }
+        }
     </style>
 </head>
 <body>
