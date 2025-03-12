@@ -22,11 +22,10 @@
             background-color: #f8f9fa;
             border-color: #dee2e6 #dee2e6 #f8f9fa;
         }
-        .accessibility-settings {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
+        .accessibility-bar {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: right;
         }
         /* Адаптивные стили для мобильных устройств */
         @media (max-width: 768px) {
@@ -36,27 +35,19 @@
             .sidebar {
                 margin-top: 20px;
             }
-            .accessibility-settings {
-                position: fixed;
-                top: 5px; /* Перемещаем кнопку выше */
-                left: 50%; /* Центрируем по горизонтали */
-                transform: translateX(-50%); /* Точное центрирование */
-                width: auto; /* Ширина по содержимому */
-                font-size: 14px;
-                padding: 5px 10px;
-                margin-top: 0; /* Убираем отступ сверху */
-            }
-            .navbar {
-                margin-top: 40px; /* Добавляем отступ для навигационной панели */
+            .accessibility-bar {
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
     <!-- Кнопка для слабовидящих -->
-    <button class="btn btn-primary accessibility-settings" data-bs-toggle="modal" data-bs-target="#accessibilityModal">
-        Версия для слабовидящих
-    </button>
+    <div class="accessibility-bar">
+        <button id="accessibilityToggle" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#accessibilityModal">
+            <i class="bi bi-eye-fill"></i> Версия для слабовидящих
+        </button>
+    </div>
 
     <!-- Навигационное меню -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
