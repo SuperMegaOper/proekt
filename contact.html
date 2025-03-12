@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <!-- Подключение Bootstrap 5 CSS через CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <!-- Кастомизация стилей -->
+    <style>
+        .contact-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .contact-info h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .contact-info ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .contact-info ul li {
+            margin-bottom: 10px;
+        }
+        .contact-info ul li strong {
+            color: #34495e;
+        }
+        .nav-tabs .nav-link {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #f8f9fa;
+            border-color: #dee2e6 #dee2e6 #f8f9fa;
+        }
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Стили для режима слабовидящих */
+        .accessibility-mode {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #000 !important;
+            background-color: #fff !important;
+        }
+
+        .accessibility-mode h1,
+        .accessibility-mode h2,
+        .accessibility-mode h3,
+        .accessibility-mode h4,
+        .accessibility-mode h5,
+        .accessibility-mode h6 {
+            color: #000 !important;
+        }
+
+        .accessibility-mode a {
+            color: #0000EE !important;
+            text-decoration: underline !important;
+        }
+
+        .accessibility-mode img {
+            filter: contrast(120%) !important;
+        }
+
+        .accessibility-mode .navbar,
+        .accessibility-mode .footer {
+            background-color: #f8f9fa !important;
+        }
+
+        .accessibility-mode .accordion-button {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+
+        .accessibility-mode .accordion-body {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+
+        .accessibility-mode .table {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+
+        .accessibility-mode .table th,
+        .accessibility-mode .table td {
+            border-color: #000 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Панель доступности -->
+    <div class="accessibility-bar bg-light p-2 text-end">
+        <button id="accessibilityToggle" class="btn btn-sm btn-primary">
+            <i class="bi bi-eye-fill"></i> Версия для слабовидящих
+        </button>
+    </div>
+
+    <!-- Навигационное меню -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Хостинги</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="types.html">Виды хостингов</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="criteria.html">Критерии подбора</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support.html">Техническая поддержка</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="contact.html">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Основная часть -->
+            <div class="col-md-8">
+                <h1>Контакты</h1>
+                <p>Свяжитесь с нами, чтобы получить дополнительную информацию или помощь.</p>
+
+                <!-- Изображение -->
+                <img src="images/contact.jpg.webp" alt="Контакты" class="img-fluid mb-4">
+
+                <!-- Контактная информация -->
+                <section class="contact-info">
+                    <h3>Контактная информация</h3>
+                    <ul>
+                        <li><strong>Телефон:</strong> <span id="randomPhone">+7 (XXX) XXX-XX-XX</span></li>
+                        <li><strong>Электронная почта:</strong> <span id="randomEmail">support@example.com</span></li>
+                        <li><strong>Адрес:</strong> <span id="randomAddress">г. Москва, ул. Примерная, д. 123</span></li>
+                    </ul>
+                </section>
+
+                <!-- Форма обратной связи -->
+                <section class="mt-5">
+                    <h2>Форма обратной связи</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Ваше имя</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Электронная почта</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Сообщение</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Сайдбар -->
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <h3>Полезная информация</h3>
+                    <!-- Вкладки -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="news-tab" data-bs-toggle="tab" data-bs-target="#news" type="button" role="tab" aria-controls="news" aria-selected="true">Новости</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="articles-tab" data-bs-toggle="tab" data-bs-target="#articles" type="button" role="tab" aria-controls="articles" aria-selected="false">Статьи</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="forum-tab" data-bs-toggle="tab" data-bs-target="#forum" type="button" role="tab" aria-controls="forum" aria-selected="false">Форум</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Вкладка "Новости" -->
+                        <div class="tab-pane fade show active" id="news" role="tabpanel" aria-labelledby="news-tab">
+                            <h4 class="mt-3">Новости о хостингах</h4>
+                            <ul>
+                                <li><strong>Новый тарифный план:</strong> Мы запустили новый облачный хостинг с улучшенной производительностью.</li>
+                                <li><strong>Обновление серверов:</strong> Все серверы были обновлены для повышения надежности.</li>
+                                <li><strong>Акция:</strong> Скидка 20% на все тарифы VPS до конца месяца.</li>
+                            </ul>
+                        </div>
+                        <!-- Вкладка "Статьи" -->
+                        <div class="tab-pane fade" id="articles" role="tabpanel" aria-labelledby="articles-tab">
+                            <h4 class="mt-3">Статьи о хостингах</h4>
+                            <ul>
+                                <li><strong>Как выбрать хостинг:</strong> Руководство для начинающих.</li>
+                                <li><strong>Преимущества облачного хостинга:</strong> Почему это лучшее решение для вашего сайта.</li>
+                                <li><strong>Сравнение VPS и выделенных серверов:</strong> Что выбрать для вашего проекта?</li>
+                            </ul>
+                        </div>
+                        <!-- Вкладка "Форум" -->
+                        <div class="tab-pane fade" id="forum" role="tabpanel" aria-labelledby="forum-tab">
+                            <h4 class="mt-3">Форум</h4>
+                            <ul>
+                                <li><strong>Обсуждение:</strong> Какой хостинг лучше для интернет-магазина?</li>
+                                <li><strong>Вопрос:</strong> Как перенести сайт на новый хостинг?</li>
+                                <li><strong>Советы:</strong> Как оптимизировать сайт для повышения скорости загрузки?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">© 2025 Виды хостингов проект Тимченко Е.В. Все права защищены.</span>
+        </div>
+    </footer>
+
+    <!-- Подключение Bootstrap 5 JS через CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Скрипт для генерации случайных данных -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Генерация случайного номера телефона
+            function generateRandomPhone() {
+                const prefix = '+7 (XXX) XXX-XX-XX';
+                return prefix.replace(/X/g, () => Math.floor(Math.random() * 10));
+            }
+
+            // Генерация случайного email
+            function generateRandomEmail() {
+                const domains = ['example.com', 'hosting.com', 'support.com'];
+                const name = Math.random().toString(36).substring(2, 8);
+                const domain = domains[Math.floor(Math.random() * domains.length)];
+                return `${name}@${domain}`;
+            }
+
+            // Генерация случайного адреса
+            function generateRandomAddress() {
+                const cities = ['Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург', 'Казань'];
+                const streets = ['ул. Примерная', 'ул. Центральная', 'ул. Ленина', 'ул. Пушкина', 'ул. Гагарина'];
+                const city = cities[Math.floor(Math.random() * cities.length)];
+                const street = streets[Math.floor(Math.random() * streets.length)];
+                const building = Math.floor(Math.random() * 100) + 1;
+                return `г. ${city}, ${street}, д. ${building}`;
+            }
+
+            // Вставка случайных данных
+            document.getElementById('randomPhone').textContent = generateRandomPhone();
+            document.getElementById('randomEmail').textContent = generateRandomEmail();
+            document.getElementById('randomAddress').textContent = generateRandomAddress();
+
+            // Функция для слабовидящих
+            const accessibilityToggle = document.getElementById('accessibilityToggle');
+            const body = document.body;
+
+            // Проверяем сохраненное состояние
+            if (localStorage.getItem('accessibilityMode') === 'enabled') {
+                body.classList.add('accessibility-mode');
+                accessibilityToggle.innerHTML = '<i class="bi bi-eye-slash-fill"></i> Обычная версия';
+            }
+
+            // Переключение режима для слабовидящих
+            accessibilityToggle.addEventListener('click', function () {
+                body.classList.toggle('accessibility-mode');
+
+                // Сохраняем состояние в localStorage
+                if (body.classList.contains('accessibility-mode')) {
+                    localStorage.setItem('accessibilityMode', 'enabled');
+                    accessibilityToggle.innerHTML = '<i class="bi bi-eye-slash-fill"></i> Обычная версия';
+                } else {
+                    localStorage.setItem('accessibilityMode', 'disabled');
+                    accessibilityToggle.innerHTML = '<i class="bi bi-eye-fill"></i> Версия для слабовидящих';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
