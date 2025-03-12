@@ -52,9 +52,11 @@
         }
 
         /* Скрытие изображений и видео */
-        body.hide-images img,
+        body.hide-images img {
+            display: none !important; /* Важно: принудительно скрыть изображения */
+        }
         body.hide-images .video-container {
-            display: none;
+            display: none !important; /* Важно: принудительно скрыть видео */
         }
 
         /* Адаптивные стили для мобильных устройств */
@@ -337,9 +339,9 @@
                 }
 
                 if (hideVideos) {
-                    document.querySelectorAll('.video-container').forEach(video => video.style.display = 'none');
+                    body.classList.add('hide-images'); // Используем тот же класс для видео
                 } else {
-                    document.querySelectorAll('.video-container').forEach(video => video.style.display = 'block');
+                    body.classList.remove('hide-images');
                 }
 
                 // Закрытие модального окна
