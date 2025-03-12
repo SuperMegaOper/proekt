@@ -37,15 +37,27 @@
                 margin-top: 20px;
             }
             .accessibility-settings {
-                top: 5px;
-                right: 5px;
+                position: fixed;
+                top: 5px; /* Перемещаем кнопку выше */
+                left: 50%; /* Центрируем по горизонтали */
+                transform: translateX(-50%); /* Точное центрирование */
+                width: auto; /* Ширина по содержимому */
                 font-size: 14px;
                 padding: 5px 10px;
+                margin-top: 0; /* Убираем отступ сверху */
+            }
+            .navbar {
+                margin-top: 40px; /* Добавляем отступ для навигационной панели */
             }
         }
     </style>
 </head>
 <body>
+    <!-- Кнопка для слабовидящих -->
+    <button class="btn btn-primary accessibility-settings" data-bs-toggle="modal" data-bs-target="#accessibilityModal">
+        Версия для слабовидящих
+    </button>
+
     <!-- Навигационное меню -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -74,11 +86,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Кнопка для слабовидящих -->
-    <button class="btn btn-primary accessibility-settings" data-bs-toggle="modal" data-bs-target="#accessibilityModal">
-        Версия для слабовидящих
-    </button>
 
     <!-- Модальное окно для настроек доступности -->
     <div class="modal fade" id="accessibilityModal" tabindex="-1" aria-labelledby="accessibilityModalLabel" aria-hidden="true">
