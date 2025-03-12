@@ -11,11 +11,17 @@
     <link href="css/styles.css" rel="stylesheet">
     <!-- Кастомизация стилей -->
     <style>
+        /* Общие стили */
+        body {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
         .video-container {
-            max-width: 800px;
+            max-width: 100%;
             margin: 0 auto;
             position: relative;
-            padding-top: 56.25%;
+            padding-top: 56.25%; /* Соотношение 16:9 для видео */
         }
         .video-container iframe {
             position: absolute;
@@ -44,14 +50,118 @@
         body.accessibility-mode .video-container {
             border: 2px solid #000;
         }
+
+        /* Скрытие изображений и видео */
+        body.hide-images img,
+        body.hide-images .video-container {
+            display: none;
+        }
+
+        /* Адаптивные стили для мобильных устройств */
+        @media (max-width: 767.98px) {
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            h3 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 16px;
+            }
+
+            .navbar-brand {
+                font-size: 18px;
+            }
+
+            .carousel img {
+                height: auto;
+                max-width: 100%;
+            }
+
+            .sidebar {
+                margin-top: 20px;
+            }
+
+            .accessibility-bar {
+                text-align: center;
+            }
+
+            .accessibility-bar button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Кнопка для слабовидящих -->
     <div class="accessibility-bar bg-light p-2 text-end">
-        <button id="accessibilityToggle" class="btn btn-sm btn-primary">
+        <button id="accessibilityToggle" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#accessibilityModal">
             <i class="bi bi-eye-fill"></i> Версия для слабовидящих
         </button>
+    </div>
+
+    <!-- Модальное окно для настроек слабовидящих -->
+    <div class="modal fade" id="accessibilityModal" tabindex="-1" aria-labelledby="accessibilityModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="accessibilityModalLabel">Настройки для слабовидящих</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="fontSize" class="form-label">Размер шрифта:</label>
+                            <select id="fontSize" class="form-select">
+                                <option value="16px">Стандартный</option>
+                                <option value="20px">Большой</option>
+                                <option value="24px">Очень большой</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="backgroundColor" class="form-label">Цвет фона:</label>
+                            <select id="backgroundColor" class="form-select">
+                                <option value="#ffffff">Белый</option>
+                                <option value="#ffffcc">Светло-желтый</option>
+                                <option value="#ccccff">Светло-голубой</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="textColor" class="form-label">Цвет текста:</label>
+                            <select id="textColor" class="form-select">
+                                <option value="#000000">Черный</option>
+                                <option value="#333333">Темно-серый</option>
+                                <option value="#0000cc">Синий</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="lineHeight" class="form-label">Интервал между строками:</label>
+                            <select id="lineHeight" class="form-select">
+                                <option value="1.5">Стандартный</option>
+                                <option value="2">Большой</option>
+                                <option value="2.5">Очень большой</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="hideImages">
+                            <label class="form-check-label" for="hideImages">Скрыть изображения</label>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="hideVideos">
+                            <label class="form-check-label" for="hideVideos">Скрыть видео</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" id="applyAccessibilitySettings">Применить</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Навигационное меню -->
@@ -201,19 +311,40 @@
     <!-- Скрипт для режима слабовидящих -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const accessibilityToggle = document.getElementById('accessibilityToggle');
+            const applyButton = document.getElementById('applyAccessibilitySettings');
             const body = document.body;
 
-            // Переключение режима для слабовидящих
-            accessibilityToggle.addEventListener('click', function () {
-                body.classList.toggle('accessibility-mode');
+            applyButton.addEventListener('click', function () {
+                // Применение настроек
+                const fontSize = document.getElementById('fontSize').value;
+                const backgroundColor = document.getElementById('backgroundColor').value;
+                const textColor = document.getElementById('textColor').value;
+                const lineHeight = document.getElementById('lineHeight').value;
+                const hideImages = document.getElementById('hideImages').checked;
+                const hideVideos = document.getElementById('hideVideos').checked;
 
-                // Изменение текста кнопки
-                if (body.classList.contains('accessibility-mode')) {
-                    accessibilityToggle.innerHTML = '<i class="bi bi-eye-slash-fill"></i> Обычная версия';
+                // Применение стилей
+                body.style.fontSize = fontSize;
+                body.style.backgroundColor = backgroundColor;
+                body.style.color = textColor;
+                body.style.lineHeight = lineHeight;
+
+                // Скрытие изображений и видео
+                if (hideImages) {
+                    body.classList.add('hide-images');
                 } else {
-                    accessibilityToggle.innerHTML = '<i class="bi bi-eye-fill"></i> Версия для слабовидящих';
+                    body.classList.remove('hide-images');
                 }
+
+                if (hideVideos) {
+                    document.querySelectorAll('.video-container').forEach(video => video.style.display = 'none');
+                } else {
+                    document.querySelectorAll('.video-container').forEach(video => video.style.display = 'block');
+                }
+
+                // Закрытие модального окна
+                const modal = bootstrap.Modal.getInstance(document.getElementById('accessibilityModal'));
+                modal.hide();
             });
         });
     </script>
